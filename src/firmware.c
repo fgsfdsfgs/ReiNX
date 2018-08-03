@@ -24,7 +24,7 @@
 #include "error.h"
 #include "firmware.h"
 #include "kippatches.h"
-#include "animsplash.h"
+#include "gif.h"
 
 #define VERSION "v0.1"
 
@@ -57,10 +57,7 @@ static void SE_lock() {
 
 void drawSplash() {
     // Draw splashscreen to framebuffer.
-    if (!splash_init("/ReiNX/asplash.bin")) {
-        while (!splash_draw_frame())
-          usleep(1);
-    }
+    gif_show("/ReiNX/asplash.gif");
     usleep(500000);
 }
 
