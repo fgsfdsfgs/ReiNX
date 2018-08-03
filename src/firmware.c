@@ -24,6 +24,7 @@
 #include "error.h"
 #include "firmware.h"
 #include "kippatches.h"
+#include "animsplash.h"
 
 #define VERSION "v0.1"
 
@@ -56,11 +57,11 @@ static void SE_lock() {
 
 void drawSplash() {
     // Draw splashscreen to framebuffer.
-    if(fopen("/ReiNX/splash.bin", "rb") != 0) {
-        fread((void*)0xC0000000, fsize(), 1);
-        fclose();
-        usleep(3000000);
+    if (!splash_init("/ReiNX/asplash.bin")) {
+        while (!splash_draw_frame())
+          usleep(1);
     }
+    usleep(500000);
 }
 
 pk11_offs *pkg11_offsentify(u8 *pkg1) {
