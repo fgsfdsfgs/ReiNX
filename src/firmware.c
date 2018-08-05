@@ -24,6 +24,7 @@
 #include "error.h"
 #include "firmware.h"
 #include "kippatches.h"
+#include "bmp.h"
 
 #define VERSION "v0.1"
 
@@ -56,11 +57,13 @@ static void SE_lock() {
 
 void drawSplash() {
     // Draw splashscreen to framebuffer.
-    if(fopen("/ReiNX/splash.bin", "rb") != 0) {
-        fread((void*)0xC0000000, fsize(), 1);
-        fclose();
+    u32 *fuck = malloc(1280 * 768 * sizeof(u32));
+    if (!fuck) return;
+    if (!bmp_load("/ReiNX/splash.bmp", fuck, 768)) {
+        memcpy((void*)0xC0000000, fuck, 1280 * 768 * sizeof(u32));
         usleep(3000000);
     }
+    free(fuck);
 }
 
 pk11_offs *pkg11_offsentify(u8 *pkg1) {
