@@ -25,7 +25,7 @@
 #include "firmware.h"
 #include "kippatches.h"
 
-#define VERSION "v0.1"
+#define VERSION "v1.0"
 
 static pk11_offs *pk11Offs = NULL;
 
@@ -159,12 +159,12 @@ void patch(pk11_offs *pk11, pkg2_hdr_t *pkg2, link_t *kips) {
     }
 
     u8 kipHash[0x20];
-    char *patchFilter[] = { "nosigchk", "nocmac", "nogc", NULL };
+    char *patchFilter[] = { "nosigchk", "nocmac", "npdm", "nogc", NULL };
 
     // enable nogc if there's a file called "nogc" in /ReiNX/ 
     //(I expect the 1% of people this effects can read the guide)
     if (!fopen("/ReiNX/nogc", "rb")) {
-        patchFilter[2] = NULL;
+        patchFilter[3] = NULL;
         fclose();
     }
 
