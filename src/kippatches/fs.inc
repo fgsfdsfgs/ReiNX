@@ -89,13 +89,13 @@ static kipdiff_t fs_diffs_401_nocmac[6] = {
 
 static kipdiff_t fs_diffs_401_nogc[3] = {
   { 0xA3458, 4, "\x14\x40\x80\x72", "\x14\x80\x80\x72" },
-  { 0xAAC98, 8, "\x80\x02\xA0\x52\x40\x40\x91\x72", "\xE0\x03\x1F\x2A\x1F\x20\x03\xD5" },
+  { 0xAAB44, 8, "\xF4\x4F\xBE\xA9\xFD\x7B\x01\xA9", "\xE0\x03\x1F\x2A\xC0\x03\x5F\xD6" },
   { 0, 0, NULL, NULL },
 };
 
 static kipdiff_t fs_diffs_410_nogc[3] = {
   { 0xA34BC, 4, "\x14\x40\x80\x72", "\x14\x80\x80\x72" },
-  { 0xAACFC, 8, "\x80\x02\xA0\x52\x40\x40\x91\x72", "\xE0\x03\x1F\x2A\x1F\x20\x03\xD5" },
+  { 0xAABA8, 8, "\xF4\x4F\xBE\xA9\xFD\x7B\x01\xA9", "\xE0\x03\x1F\x2A\xC0\x03\x5F\xD6" },
   { 0, 0, NULL, NULL },
 };
 
@@ -118,7 +118,12 @@ static kipdiff_t fs_diffs_500_nocmac[8] = {
 
 static kipdiff_t fs_diffs_500_nogc[3] = {
   { 0xCF3C4, 4, "\x14\x40\x80\x52", "\x14\x80\x80\x52" },
-  { 0xD74FC, 8, "\x40\x40\x91\x52\x80\x02\xA0\x72", "\xE0\x03\x1F\x2A\x1F\x20\x03\xD5" },
+  { 0xD73A0, 8, "\xF4\x4F\xBE\xA9\xFD\x7B\x01\xA9", "\xE0\x03\x1F\x2A\xC0\x03\x5F\xD6" },
+  { 0, 0, NULL, NULL },
+};
+
+static kipdiff_t fs_diffs_500_npdm[2] = {
+  { 0x22D68, 4, "\x9A\xE3\xFF\x97", "\x1F\x20\x03\xD5" },
   { 0, 0, NULL, NULL },
 };
 
@@ -141,7 +146,12 @@ static kipdiff_t fs_diffs_510_nocmac[8] = {
 
 static kipdiff_t fs_diffs_510_nogc[3] = {
   { 0xCF794, 4, "\x14\x40\x80\x52", "\x14\x80\x80\x52" },
-  { 0xD78CC, 8, "\x40\x40\x91\x52\x80\x02\xA0\x72", "\xE0\x03\x1F\x2A\x1F\x20\x03\xD5" },
+  { 0xD7770, 8, "\xF4\x4F\xBE\xA9\xFD\x7B\x01\xA9", "\xE0\x03\x1F\x2A\xC0\x03\x5F\xD6" },
+  { 0, 0, NULL, NULL },
+};
+
+static kipdiff_t fs_diffs_510_npdm[2] = {
+  { 0x22D98, 4, "\x9A\xE3\xFF\x97", "\x1F\x20\x03\xD5" },
   { 0, 0, NULL, NULL },
 };
 
@@ -195,6 +205,7 @@ static kippatch_t fs_kip_patches_500[] = {
   { "nosigchk", fs_diffs_500_nosigchk },
   { "nocmac", fs_diffs_500_nocmac },
   { "nogc", fs_diffs_500_nogc },
+  { "npdm", fs_diffs_500_npdm },
   { NULL, NULL }
 };
 
@@ -202,5 +213,6 @@ static kippatch_t fs_kip_patches_510[] = {
   { "nosigchk", fs_diffs_510_nosigchk },
   { "nocmac", fs_diffs_510_nocmac },
   { "nogc", fs_diffs_510_nogc },
+  { "npdm", fs_diffs_510_npdm },
   { NULL, NULL }
 };
